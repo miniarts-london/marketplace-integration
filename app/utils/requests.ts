@@ -67,20 +67,13 @@ export async function fetchAssetListFromAPI(){
   return res.json()
 }
 
-// fetch data from DB
-export async function fetchAssetList(){
-  const host = 'https://library-app-omega-five.vercel.app'
-  // const host = 'http://localhost:3000'
-  const url = `${host}/api/assetList`
-  
-  const res = await ssrApiGet(url, LIST_REVALIDATE_SECONDS, ['assets'])
-
-  if (!res.ok) {
-    throw new Error('Failed to fetch data')
-  }
-  
-  return res.json()
-}
+// This used to fetch our own /api/assetList route over HTTP from a
+// server component — a self-inflicted network hop, since the route and
+// this code run in the same deployment. Server components should call
+// `queryAssetList()` from `app/utils/db/assetList.ts` directly instead;
+// this file stays fetch-based/client-safe (fetchAssetListFromAPI and
+// fetchMetricData below still need it), so the direct-DB call lives in
+// its own module rather than being added here.
 
 
 export async function fetchMetricData(

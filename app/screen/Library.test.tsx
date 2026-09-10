@@ -11,7 +11,7 @@ jest.mock('../analytics', () => ({
   analyticsLogEvent: jest.fn(),
 }))
 
-jest.mock('../component/Modal', () => ({
+jest.mock('../components/Modal', () => ({
   Modal: () => null,
 }))
 

@@ -1,15 +1,15 @@
 'use client'
 
 import React, { useState, useEffect, Suspense, lazy, useTransition } from 'react'
-import { SectionAssetList } from '../component/SectionAssetList'
+import { SectionAssetList } from '../components/SectionAssetList'
 import { assetTypes, showMoreNum, initAssetNum } from '../config'
 import { AssetList, ModalDataProps } from '../models/assets'
-import { Request } from '../component/Request'
-import { FavouritesBar } from '../component/FavouritesBar'
+import { Request } from '../components/Request'
+import { FavouritesBar } from '../components/FavouritesBar'
 import { analyticsInit, analyticsLogEvent } from '../analytics'
 
 const Modal = lazy(() =>
-  import('../component/Modal').then((mod) => ({ default: mod.Modal }))
+  import('../components/Modal').then((mod) => ({ default: mod.Modal }))
 )
 
 export function Library({ data }: {data: AssetList[]}) {   

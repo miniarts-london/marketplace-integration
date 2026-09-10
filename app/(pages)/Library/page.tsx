@@ -1,14 +1,18 @@
 import { Library } from "../../screen/Library"
-import {fetchAssetListFromAPI } from "../../utils/requests"
+import { fetchAssetListFromAPI } from "../../utils/requests"
 
-const getAssetList = () => {
+const getAssetList = async () => {
   //load the asset list
   //if we need to authenticate, we can pass here
 
-  /* connect to db directly */
-  // return fetchAssetList()
+  /* connect to db directly — server component calling the query function
+     directly (queryAssetList, from ../../utils/db/assetList), no HTTP
+     round trip through our own /api/assetList route */
+  // const { queryAssetList } = await import("../../utils/db/assetList")
+  // const rows = await queryAssetList()
+  // return { assetList: rows }
 
-  /* API request */
+  /* API request to the separate service-express deployment */
   return fetchAssetListFromAPI()
 }
 

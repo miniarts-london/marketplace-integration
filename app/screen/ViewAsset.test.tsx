@@ -10,7 +10,7 @@ jest.mock('../utils/requests', () => ({
   getAssetDetails: jest.fn(),
 }))
 
-jest.mock('../component/ViewChart', () => ({
+jest.mock('../components/ViewChart', () => ({
   ViewChart: () => <div data-testid="view-chart" />,
 }))
 
